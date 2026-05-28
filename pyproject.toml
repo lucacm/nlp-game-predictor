@@ -1,0 +1,30 @@
+[project]
+name = "game-predictor"
+version = "0.1.0"
+description = "NLP project predicting game success from pre-release social media discourse"
+requires-python = ">=3.12"
+dependencies = [
+    # Data base (Hugging Face Steam dataset)
+    "datasets>=4.0.0",
+    "huggingface-hub>=0.34.0",
+    "pyarrow>=17.0.0",
+    "pandas>=2.3.1",
+    # Text collection (Reddit via PullPush/.json, YouTube Data API)
+    "requests>=2.32.0",
+    "google-api-python-client>=2.196.0",
+    "python-dotenv>=1.1.1",
+    # Dataset build
+    "langdetect>=1.0.9",
+    # NLP (course stack)
+    "torch>=2.7.1",
+    "transformers>=4.53.3",
+    "scikit-learn>=1.7.1",
+    "nltk>=3.9.1",
+    "sentencepiece>=0.2.1",
+    # EDA / notebooks
+    "matplotlib>=3.10.3",
+    "ipykernel>=6.30.0",
+    "jupyter>=1.1.1",
+    # Utils
+    "tqdm>=4.67.1",
+]
