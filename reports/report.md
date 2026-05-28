@@ -26,7 +26,7 @@ O resultado nos primeiros meses de vida do jogo reflete essa conjuntura:
 
 | Período | Pico de jogadores simultâneos | Variação em relação ao lançamento |
 |---|---|---|
-| 06/03/2026 (lançamento) | 88.337 | — |
+| 06/03/2026 (lançamento) | 88.337 | referência |
 | ~13/03/2026 (1 semana) | ~13.000 | −85% |
 | Maio 2026 (pico mensal) | 17.042 | −81% |
 
@@ -38,7 +38,7 @@ O capítulo mais recente veio depois do lançamento: ao confirmar que Destiny 2 
 
 O que diferencia o Marathon dos outros casos desta seção é que, apesar de todo o contexto adverso, **o jogo está vivo**. A equipe de desenvolvedores trabalha com planejamento de longo prazo, a Bungie segue com o apoio da Sony, e a base de jogadores, embora menor que o esperado no lançamento, se mantém ativa. O Marathon é o ponto fora da curva: um jogo que acumulou hate pré-lançamento mensurável, sofreu queda acentuada nas primeiras semanas, mas não seguiu o mesmo caminho de Concord e Highguard. Isso ilustra um ponto relevante para este projeto: o discurso pré-lançamento é um sinal preditivo, mas não determinístico. Fatores como qualidade do produto, suporte do publisher e fidelidade de nicho também determinam o destino de um jogo, e esses fatores não são capturáveis apenas pelo texto.
 
-Nos casos de Concord, Skull and Bones e Highguard, o sinal estava no texto antes do jogo sair: buzz negativo, comparações com fracassos anteriores e críticas ao modelo de negócios estavam acessíveis no Reddit e YouTube semanas ou meses antes do lançamento, e o destino comercial confirmou o que a comunidade já dizia. O Marathon adiciona uma camada de complexidade a essa hipótese: o sinal pré-lançamento existia e era intenso, mas o jogo sobreviveu. Essa distinção — entre sinal e determinismo — é parte do que este projeto busca explorar empiricamente.
+Nos casos de Concord, Skull and Bones e Highguard, o sinal estava no texto antes do jogo sair: buzz negativo, comparações com fracassos anteriores e críticas ao modelo de negócios estavam acessíveis no Reddit e YouTube semanas ou meses antes do lançamento, e o destino comercial confirmou o que a comunidade já dizia. O Marathon adiciona uma camada de complexidade a essa hipótese: o sinal pré-lançamento existia e era intenso, mas o jogo sobreviveu. Essa distinção, entre sinal e determinismo, é parte do que este projeto busca explorar empiricamente.
 
 **Fontes da motivação:**
 > [1] Newsweek. *The Game Awards 2025 darling 'Highguard' shuts down permanently next week.* https://www.newsweek.com/entertainment/the-game-awards-2025-darling-highguard-shuts-down-permanently-next-week-11614975  
@@ -184,13 +184,13 @@ TF-IDF+LR supera a meta; DistilBERT fine-tuned fica em 0,685, ligeiramente abaix
 
 ### 5.3 Curvas de aprendizado
 
-![Curvas de aprendizado — target de avaliação](figures/02_learning_curves_rating.png)
+![Curvas de aprendizado: target de avaliação](figures/02_learning_curves_rating.png)
 
-![Curvas de aprendizado — target de vendas](figures/02_learning_curves_sales.png)
+![Curvas de aprendizado: target de vendas](figures/02_learning_curves_sales.png)
 
 ### 5.4 Comparação consolidada
 
-![Resultados combinados — todos os modelos e targets](figures/02_results_combined.png)
+![Resultados combinados: todos os modelos e targets](figures/02_results_combined.png)
 
 ---
 
@@ -247,7 +247,9 @@ Este projeto indica que texto pré-lançamento do Reddit e comentários de trail
 
 No entanto, os resultados devem ser interpretados com cautela. Várias premissas foram assumidas ao longo do projeto e influenciam diretamente os números obtidos. O principal viés de seleção é a cobertura: apenas jogos com texto pré-lançamento disponível entram no dataset, o que favorece automaticamente títulos com maior orçamento de marketing ou maior comunidade online e exclui exatamente os jogos que, por falta de visibilidade, podem ter fracassado por razões que o texto jamais capturaria.
 
-Há também uma dificuldade estrutural na definição dos próprios targets. Avaliação e vendas medem coisas diferentes, e nenhuma delas captura isoladamente o que significa um jogo ser um sucesso. Um jogo pode ter avaliações excelentes e vender pouco, levando o estúdio ao fechamento por insustentabilidade financeira. O inverso também ocorre: jogos com avaliações majoritariamente negativas que se tornam sucessos comerciais expressivos, sustentando o estúdio por anos. A própria proxy de vendas usada — `estimated_owners` acumulado ao longo de anos na Steam — não reflete o desempenho na janela de lançamento, que é o momento em que o sinal pré-lançamento seria realmente útil como ferramenta de decisão.
+Há também uma dificuldade estrutural na definição dos próprios targets. Avaliação e vendas medem coisas diferentes, e nenhuma delas captura isoladamente o que significa um jogo ser um sucesso. Um jogo pode ter avaliações excelentes e vender pouco, levando o estúdio ao fechamento por insustentabilidade financeira. O inverso também ocorre, e o caso do Cyberpunk 2077 (CD Projekt Red, 2020) ilustra essa tensão com precisão: lançado com avaliações majoritariamente negativas, bugs críticos e um escândalo de proteção ao consumidor que levou a Sony a retirar o título da PlayStation Store, o jogo foi um sucesso comercial desde o primeiro dia. O hype acumulado por The Witcher 3 e a reputação da CD Projekt Red geraram mais de 13 milhões de cópias pré-vendidas antes do lançamento, garantindo retorno financeiro independentemente da recepção crítica. Nos anos seguintes, a empresa trabalhou extensivamente no produto, lançou o DLC Phantom Liberty em 2023, e hoje o Cyberpunk 2077 é amplamente reconhecido como um sucesso em ambas as dimensões. Classificá-lo em qualquer um dos nossos targets dependeria arbitrariamente do momento em que o snapshot fosse tirado: no lançamento, seria um fracasso de avaliação; no estado atual, seria um sucesso em ambos.
+
+Essa ambiguidade se aprofunda quando se considera o porte do estúdio. Para um time indie de dez pessoas, 200.000 cópias vendidas representam sustentabilidade financeira e capital para o próximo projeto, configurando um sucesso claro. Para um estúdio AAA com centenas de funcionários e orçamento de centenas de milhões de dólares, o mesmo número é um fracasso comercial que pode motivar demissões em massa ou fechamento do estúdio. O limiar que separa sucesso de fracasso, tanto em avaliação quanto em vendas, é fundamentalmente dependente do contexto de cada empresa, do seu custo operacional, dos seus objetivos de longo prazo e da plataforma em que o jogo é lançado. Este projeto definiu esse limiar de forma global pela mediana da amostra, o que é uma aproximação necessária, mas não captura essa heterogeneidade real do setor. A proxy de vendas utilizada (a coluna `estimated_owners` acumulada ao longo de anos na Steam) tampouco reflete o desempenho na janela de lançamento, que é o momento em que o sinal pré-lançamento seria realmente útil como ferramenta de decisão.
 
 Expandir o escopo para além do NLP também revelariam limitações importantes. Variáveis como orçamento de desenvolvimento, investimento em marketing, exclusividade de plataforma, janela de lançamento em relação a concorrentes e dados de vendas nos primeiros 30 dias pós-lançamento seriam altamente preditivas, mas são em grande parte inacessíveis publicamente. Um modelo completo de predição de sucesso de jogos precisaria dessas dimensões, e o texto pré-lançamento, por mais informativo que seja, é apenas um componente desse sistema.
 
